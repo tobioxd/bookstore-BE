@@ -14,15 +14,15 @@ MODIFY COLUMN name ENUM('admin','user');
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    username NVARCHAR(255) NOT NULL DEFAULT '',
-    _password NVARCHAR(255) NOT NULL DEFAULT '',
-    _name NVARCHAR(255) DEFAULT '',
+    username NVARCHAR(255) NOT NULL ,
+    password NVARCHAR(255) NOT NULL ,
+    fullname NVARCHAR(255) DEFAULT '',
     gender NVARCHAR(255) DEFAULT '',
     dob DATE,
     phoneNumber NVARCHAR(255) NOT NULL,
-    address NVARCHAR(255) NOT NULL DEFAULT '',
-    photoUrl NVARCHAR(255) NOT NULL DEFAULT '',
-    _active TINYINT(1) DEFAULT 1,
+    address NVARCHAR(255) DEFAULT '',
+    photoUrl NVARCHAR(255) DEFAULT '',
+    is_active TINYINT(1) DEFAULT 1,
     createAt DATE,
     updateAt DATE,
     role_id INT NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE orders(
     note VARCHAR(255) DEFAULT '',
     order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(255) ,
-    total_paid FLOAT CHECK(total_paid >= 0 ),
+    total_paid FLOAT NOT NULL CHECK(total_paid >= 0 ),
     shipping_method VARCHAR(255),
     payment_method VARCHAR(255),
     shipping_date DATE
@@ -87,8 +87,8 @@ CREATE TABLE order_details(
     FOREIGN KEY (order_id) REFERENCES orders(id),
     book_id INT,
     FOREIGN KEY(book_id) REFERENCES books(id),
-    price FLOAT CHECK(price >=0 ),
-    num_of_book INT CHECK(num_of_book >= 0),
-    total_money FLOAT CHECK(total_money >= 0)
+    price FLOAT NOT NULL CHECK(price >=0 ),
+    num_of_book INT NOT NULL CHECK(num_of_book >= 0),
+    total_money FLOAT NOT NULL CHECK(total_money >= 0)
 );
 
