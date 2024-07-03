@@ -1,4 +1,4 @@
-package com.project.bookstore.controller;
+package com.project.bookstore.controllers;
 
 import java.util.List;
 

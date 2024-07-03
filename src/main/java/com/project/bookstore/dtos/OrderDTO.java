@@ -26,9 +26,9 @@ public class OrderDTO {
 
     private String email;
 
-    @NotBlank(message = "phoneNumber is required")
-    @Size(min = 10, max = 12, message = "phoneNumber must be between 10 and 12 characters")
-    private String phoneNumber;
+    @NotBlank(message = "phonenumber is required")
+    @Size(min = 10, max = 12, message = "phonenumber must be between 10 and 12 characters")
+    private String phonenumber;
 
     @NotBlank(message = "address is required")
     private String address;

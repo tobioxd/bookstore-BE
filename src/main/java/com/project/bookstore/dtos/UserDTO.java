@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Data
@@ -31,12 +32,13 @@ public class UserDTO {
 
     private Date dob;
 
-    @NotBlank(message = "phoneNumber is required")
-    private String phoneNumber;
+    @NotBlank(message = "phonenumber is required")
+    @Size(min = 10, max = 12, message = "phonenumber must be between 10 and 12 characters")
+    private String phonenumber;
 
     private String address;
 
-    private String photoUrl;
+    private String photourl;
 
     @NotNull(message = "role_id is required")
     @JsonProperty("role_id")

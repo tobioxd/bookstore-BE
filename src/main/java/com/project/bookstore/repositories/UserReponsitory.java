@@ -10,8 +10,8 @@ import com.project.bookstore.models.User;
 @Repository
 public interface UserReponsitory extends JpaRepository<User,Long>{
 
-    boolean existByUserName(String username);
+    boolean existsByUsername(String username);
 
-    Optional<User> findByUserName(String username);
+    Optional<User> findByUsername(String username);
 
 }

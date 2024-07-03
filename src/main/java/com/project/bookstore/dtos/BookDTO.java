@@ -27,7 +27,7 @@ public class BookDTO {
     private Float price;
     
     @NotBlank (message = "Photo URL is required")
-    private String photoUrl;
+    private String photourl;
     
     @NotBlank (message = "Author is required")
     private String author;
@@ -38,7 +38,7 @@ public class BookDTO {
     @NotNull(message = "Quantity cannot be null")
     private int sumofproduct;
     
-    private Float rating;
+    private Float rating = 0.0f;
     
     private int quantityrating;
 

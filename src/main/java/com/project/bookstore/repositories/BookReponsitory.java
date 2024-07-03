@@ -10,8 +10,9 @@ import com.project.bookstore.models.Book;
 @Repository
 public interface BookReponsitory extends JpaRepository<Book,Long> {
 
-    boolean existByName(String name);
+    boolean existsByName(String name);
 
+    @SuppressWarnings("null")
     Page<Book> findAll(Pageable pageable);
 
 }

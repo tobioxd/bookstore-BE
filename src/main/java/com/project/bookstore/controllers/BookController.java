@@ -1,7 +1,10 @@
-package com.project.bookstore.controller;
+package com.project.bookstore.controllers;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -17,20 +20,37 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.bookstore.dtos.BookDTO;
+import com.project.bookstore.responses.BookListResponse;
+import com.project.bookstore.responses.BookResponse;
+import com.project.bookstore.services.BookService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("${api.prefix}/books")
+@RequiredArgsConstructor
 
 public class BookController {
 
+    private final BookService bookService;
+
     @GetMapping("")
-    public ResponseEntity<String> getBooks(
+    public ResponseEntity<BookListResponse> getAllBooks(
         @RequestParam("page") int page,
         @RequestParam("limit") int limit
     ) {
-        return ResponseEntity.ok("getBooks here");
+        
+        PageRequest pageRequest = PageRequest.of(page, limit, Sort.by("createdAt").descending());
+        Page<BookResponse> bookResponses = bookService.getAllBooks(pageRequest);
+        int totalPage = bookResponses.getTotalPages();
+        List<BookResponse> books = bookResponses.getContent();
+        return ResponseEntity.ok().body(BookListResponse    
+            .builder()
+            .totalPage(totalPage)
+            .books(books)
+            .build());
+
     }
 
     @GetMapping("/{id}")
@@ -41,7 +61,7 @@ public class BookController {
     }
 
     @PostMapping("")
-    public ResponseEntity<?> createBooks(
+    public ResponseEntity<?> createBook(
             @Valid @RequestBody BookDTO bookDTO,
             BindingResult result) {
         try {
@@ -55,7 +75,8 @@ public class BookController {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessages);
             }
 
-            return ResponseEntity.status(HttpStatus.CREATED).body("createBook success");
+            bookService.createBook(bookDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body("Create book success" + bookDTO.toString());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

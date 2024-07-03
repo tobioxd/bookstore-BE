@@ -16,7 +16,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 
 public class Book extends BaseEntity{
 
@@ -29,8 +29,8 @@ public class Book extends BaseEntity{
 
     private Float price;
 
-    @Column(name = "photoUrl" , nullable = false, length = 255)
-    private String photoUrl;
+    @Column(name = "photourl" , nullable = false, length = 255)
+    private String photourl;
     
     @Column(name = "author" , nullable = false, length = 255)
     private String author;

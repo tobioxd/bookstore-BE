@@ -12,6 +12,9 @@ CREATE TABLE roles(
 ALTER TABLE roles 
 MODIFY COLUMN name ENUM('admin','user');
 
+INSERT INTO roles (id, name) VALUES (1, 'admin');
+INSERT INTO roles (id, name) VALUES (2, 'user');
+
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username NVARCHAR(255) NOT NULL ,
@@ -19,12 +22,12 @@ CREATE TABLE users (
     fullname NVARCHAR(255) DEFAULT '',
     gender NVARCHAR(255) DEFAULT '',
     dob DATE,
-    phoneNumber NVARCHAR(255) NOT NULL,
+    phonenumber NVARCHAR(255) NOT NULL,
     address NVARCHAR(255) DEFAULT '',
-    photoUrl NVARCHAR(255) DEFAULT '',
+    photourl NVARCHAR(255) DEFAULT '',
     is_active TINYINT(1) DEFAULT 1,
-    createAt DATE,
-    updateAt DATE,
+    created_at DATE,
+    updated_at DATE,
     role_id INT NOT NULL,
     FOREIGN KEY (role_id) REFERENCES roles(id)
 );
@@ -49,7 +52,7 @@ CREATE TABLE books(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     name NVARCHAR(255) NOT NULL,
     price FLOAT NOT NULL CHECK(price >= 0),
-    photoUrl VARCHAR(255) NOT NULL ,
+    photourl VARCHAR(255) NOT NULL ,
     author NVARCHAR(255) NOT NULL ,
     description LONGTEXT NOT NULL,
     sumofproduct INT NOT NULL,
@@ -67,7 +70,7 @@ CREATE TABLE orders(
     FOREIGN KEY(user_id) REFERENCES users(id),
     fullname NVARCHAR(255) DEFAULT '',
     email VARCHAR(255) DEFAULT '',
-    phoneNumber VARCHAR(255) NOT NULL,
+    phonenumber VARCHAR(255) NOT NULL,
     address NVARCHAR(255) NOT NULL,
     note VARCHAR(255) DEFAULT '',
     order_date DATETIME DEFAULT CURRENT_TIMESTAMP,

@@ -1,4 +1,4 @@
-package com.project.bookstore.controller;
+package com.project.bookstore.controllers;
 
 import java.util.List;
 
@@ -12,13 +12,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.bookstore.dtos.UserDTO;
 import com.project.bookstore.dtos.UserLoginDTO;
+import com.project.bookstore.services.IUserService;
 
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("${api.prefix}/users")
-
+@RequiredArgsConstructor
 public class UserController {
+
+    private final IUserService userService;
 
     @PostMapping("/register")
     public ResponseEntity<?> createUser(
@@ -38,7 +42,8 @@ public class UserController {
                 return ResponseEntity.badRequest().body("Password and Retypepassword must be the same");
             }
 
-            return ResponseEntity.ok("createUser success");
+            userService.createUser(userDTO);
+            return ResponseEntity.ok("Register success" + userDTO.toString());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

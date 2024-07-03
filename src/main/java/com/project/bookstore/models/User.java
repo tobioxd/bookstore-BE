@@ -30,7 +30,7 @@ public class User extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false, length = 255)
+    @Column(name = "username", nullable = false, length = 255)
     private String username;
 
     @Column(name = "password" , nullable = false, length = 255)
@@ -45,14 +45,14 @@ public class User extends BaseEntity{
     @Column(name = "dob")
     private Date dob;
     
-    @Column(name = "phoneNumber" , nullable = false , length =  255)
-    private String phoneNumber;
+    @Column(name = "phonenumber" , nullable = false , length =  255)
+    private String phonenumber;
 
     @Column(name = "address" , length =  255)
     private String address;
 
-    @Column(name = "photoUrl" , length =  255)
-    private String photoUrl;
+    @Column(name = "photourl" , length =  255)
+    private String photourl;
 
     @ManyToOne
     @JoinColumn(name = "role_id")
