@@ -1,7 +1,6 @@
 package com.project.bookstore.models;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -67,5 +66,5 @@ public class Order {
     private String paymentMethod;
 
     @Column(name = "shipping_date")
-    private LocalDate shippingDate;
+    private Date shippingDate;
 }

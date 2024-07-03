@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.bookstore.dtos.BookDTO;
+import com.project.bookstore.models.Book;
 import com.project.bookstore.responses.BookListResponse;
 import com.project.bookstore.responses.BookResponse;
 import com.project.bookstore.services.BookService;
@@ -50,14 +51,18 @@ public class BookController {
             .totalPage(totalPage)
             .books(books)
             .build());
-
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> getBookById(
+    public ResponseEntity<?> getBook(
         @PathVariable("id") Long id
     ) {
-        return ResponseEntity.ok("getBook with id: " + id);
+        try {
+            Book book = bookService.getBookById(id);
+            return ResponseEntity.ok().body(book);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @PostMapping("")
@@ -84,9 +89,15 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateBook(
-        @PathVariable("id") Long id
+        @PathVariable("id") Long id,
+        @RequestBody BookDTO bookDTO
     ) {
-        return ResponseEntity.status(HttpStatus.OK).body("updateBook with id: " + id);
+        try{
+            bookService.updateBook(id, bookDTO);
+            return ResponseEntity.status(HttpStatus.OK).body("Update book success");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 
@@ -94,7 +105,12 @@ public class BookController {
     public ResponseEntity<String> deleteBook(
         @PathVariable("id") Long id
     ) {
-        return ResponseEntity.status(HttpStatus.OK).body("deleteBook with id: " + id);
+        try {
+            bookService.deleteBook(id);
+            return ResponseEntity.status(HttpStatus.OK).body("Delete book success");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
 }

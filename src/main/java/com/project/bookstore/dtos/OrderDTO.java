@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -40,7 +39,6 @@ public class OrderDTO {
 
     private String status;
 
-    @NotNull(message = "totalpaid must not be null")
     @Min(value = 0, message = "totalPaid must be greater than 0")
     @JsonProperty("total_paid")
     private Float totalpaid;
