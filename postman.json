@@ -1,0 +1,777 @@
+{
+    "collection": {
+        "info": {
+            "_postman_id": "49620ac5-895e-4001-ac2d-3b4d07068cea",
+            "name": "BookStore",
+            "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+            "updatedAt": "2024-07-02T08:34:55.000Z",
+            "createdAt": "2024-07-02T01:23:21.000Z",
+            "lastUpdatedBy": "33955425",
+            "uid": "33955425-49620ac5-895e-4001-ac2d-3b4d07068cea"
+        },
+        "item": [
+            {
+                "name": "Category",
+                "item": [
+                    {
+                        "name": "/api/v1/categories",
+                        "id": "82764c95-8e3b-49b9-a378-72726918328e",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}categories?page=16&limit=10",
+                                "host": [
+                                    "{{API_PREFIX2}}categories"
+                                ],
+                                "query": [
+                                    {
+                                        "key": "page",
+                                        "value": "16"
+                                    },
+                                    {
+                                        "key": "limit",
+                                        "value": "10"
+                                    }
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-82764c95-8e3b-49b9-a378-72726918328e"
+                    },
+                    {
+                        "name": "/api/v1/categories",
+                        "id": "f07b5bab-36a2-43f1-a07f-fd7904bd572f",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"name\" : \"IT\"\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}categories",
+                                "host": [
+                                    "{{API_PREFIX2}}categories"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-f07b5bab-36a2-43f1-a07f-fd7904bd572f"
+                    },
+                    {
+                        "name": "/api/v1/categories Copy",
+                        "id": "48d30c38-a569-439c-8f53-32141d834c41",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "PUT",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"name\" : \"JS\"\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}categories/1",
+                                "host": [
+                                    "{{API_PREFIX2}}categories"
+                                ],
+                                "path": [
+                                    "1"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-48d30c38-a569-439c-8f53-32141d834c41"
+                    },
+                    {
+                        "name": "/api/v1/categories Copy",
+                        "id": "df7f6b40-b741-43d3-b457-7813a1a74cb6",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                                "raw": "localhost:8088/api/v1/categories/4",
+                                "host": [
+                                    "localhost"
+                                ],
+                                "port": "8088",
+                                "path": [
+                                    "api",
+                                    "v1",
+                                    "categories",
+                                    "4"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-df7f6b40-b741-43d3-b457-7813a1a74cb6"
+                    }
+                ],
+                "id": "2891f694-16a6-4b04-938d-af91314bb8e3",
+                "uid": "33955425-2891f694-16a6-4b04-938d-af91314bb8e3"
+            },
+            {
+                "name": "Book",
+                "item": [
+                    {
+                        "name": "/api/v1/books",
+                        "id": "bc613943-720f-4a46-9b97-299ce44dfcc8",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}books?page=0&limit=10",
+                                "host": [
+                                    "{{API_PREFIX2}}books"
+                                ],
+                                "query": [
+                                    {
+                                        "key": "page",
+                                        "value": "0"
+                                    },
+                                    {
+                                        "key": "limit",
+                                        "value": "10"
+                                    }
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-bc613943-720f-4a46-9b97-299ce44dfcc8"
+                    },
+                    {
+                        "name": "/api/v1/books/id",
+                        "id": "d6c3d411-17ae-42ac-b3c7-8e9c8e6a0096",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}books/5",
+                                "host": [
+                                    "{{API_PREFIX2}}books"
+                                ],
+                                "path": [
+                                    "5"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-d6c3d411-17ae-42ac-b3c7-8e9c8e6a0096"
+                    },
+                    {
+                        "name": "/api/v1/books",
+                        "id": "6330edb1-9592-4ee2-869e-4d6d0985fcdd",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"name\" : \"IT is ez\",\r\n    \"price\" : 100,\r\n    \"photourl\" : \"test\",\r\n    \"author\" : \"Minh\",\r\n    \"description\" : \"ez\",\r\n    \"sumofproduct\" : 10,\r\n    \"categoryId\" : 1\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}books",
+                                "host": [
+                                    "{{API_PREFIX2}}books"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-6330edb1-9592-4ee2-869e-4d6d0985fcdd"
+                    },
+                    {
+                        "name": "/api/v1/books",
+                        "id": "fbae210f-752e-4dcd-98ea-efc7800bdc0c",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "PUT",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"name\" : \"IT is ez4\",\r\n    \"price\" : 100,\r\n    \"photourl\" : \"test\",\r\n    \"author\" : \"Minh\",\r\n    \"description\" : \"ez\",\r\n    \"sumofproduct\" : 10,\r\n    \"category_id\" : 1\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}books/42",
+                                "host": [
+                                    "{{API_PREFIX2}}books"
+                                ],
+                                "path": [
+                                    "42"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-fbae210f-752e-4dcd-98ea-efc7800bdc0c"
+                    },
+                    {
+                        "name": "/api/v1/books",
+                        "id": "170accd3-7975-4e88-a6e2-23fe0a88601b",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}books/41",
+                                "host": [
+                                    "{{API_PREFIX2}}books"
+                                ],
+                                "path": [
+                                    "41"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-170accd3-7975-4e88-a6e2-23fe0a88601b"
+                    }
+                ],
+                "id": "258a393a-a341-4ed6-ae26-d252f49b273f",
+                "uid": "33955425-258a393a-a341-4ed6-ae26-d252f49b273f"
+            },
+            {
+                "name": "User",
+                "item": [
+                    {
+                        "name": "/api/v1/users/register",
+                        "id": "b1b05a32-1aa5-4878-b2fb-3c54176e785a",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"username\" : \"user12\",\r\n    \"password\" : \"minh123456\",\r\n    \"retypepassword\" : \"minh123456\",\r\n    \"fullname\" : \"Nguyễn Nhật Minh\",\r\n    \"gender\" : \"male\",\r\n    \"dob\" : \"2003-11-21\",\r\n    \"phonenumber\" : \"09012338923\",\r\n    \"address\" : \"HN\",\r\n    \"role_id\" : 2\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}users/register",
+                                "host": [
+                                    "{{API_PREFIX2}}users"
+                                ],
+                                "path": [
+                                    "register"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-b1b05a32-1aa5-4878-b2fb-3c54176e785a"
+                    },
+                    {
+                        "name": "/api/v1/users/login",
+                        "id": "858b5674-07ec-4db7-9831-fb9286b788bc",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"username\": \"user1\",\r\n    \"password\" : \"minh123456\"\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "localhost:8088/api/v1/users/login",
+                                "host": [
+                                    "localhost"
+                                ],
+                                "port": "8088",
+                                "path": [
+                                    "api",
+                                    "v1",
+                                    "users",
+                                    "login"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-858b5674-07ec-4db7-9831-fb9286b788bc"
+                    }
+                ],
+                "id": "c1a9f868-59b6-466c-a88b-4bbe4b2000ca",
+                "uid": "33955425-c1a9f868-59b6-466c-a88b-4bbe4b2000ca"
+            },
+            {
+                "name": "Order",
+                "item": [
+                    {
+                        "name": "/api/v1/orders",
+                        "id": "90fa6c6b-fb77-4002-be17-93597a95d243",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"user_id\" : 2,\r\n    \"phonenumber\" : \"03582672222\",\r\n    \"address\" : \"HN\"\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}orders",
+                                "host": [
+                                    "{{API_PREFIX2}}orders"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-90fa6c6b-fb77-4002-be17-93597a95d243"
+                    },
+                    {
+                        "name": "/api/v1/orders",
+                        "id": "1f66b266-dcd3-47af-94db-d183910e0025",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX}}orders",
+                                "host": [
+                                    "{{API_PREFIX}}orders"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-1f66b266-dcd3-47af-94db-d183910e0025"
+                    },
+                    {
+                        "name": "/api/v1/orders/userId",
+                        "id": "0b91c8b4-fc1f-44e3-aaa8-963467f18197",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}orders/2",
+                                "host": [
+                                    "{{API_PREFIX2}}orders"
+                                ],
+                                "path": [
+                                    "2"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-0b91c8b4-fc1f-44e3-aaa8-963467f18197"
+                    },
+                    {
+                        "name": "/api/v1/orders",
+                        "id": "75faa206-2dbc-47cb-85ba-f30dc10f607f",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "PUT",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"user_id\" : 1,\r\n    \"fullname\" : \"Nguyen Nhat Minh\",\r\n    \"email\" : \"test@gmail.com\", \r\n    \"phonenumber\" : \"03582672222\",\r\n    \"address\" : \"HN\",\r\n    \"note\" : \"hang de vo\",\r\n    \"order_date\":\"2024-07-03T09:19:04Z\",\r\n    \"status\" : \"pending\",\r\n    \"total_paid\" : 1000,\r\n    \"shipping_method\" : \"express\",\r\n    \"payment_method\" : \"Banking\",\r\n    \"shipping_date\" : \"2024-07-10\"\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}orders/1",
+                                "host": [
+                                    "{{API_PREFIX2}}orders"
+                                ],
+                                "path": [
+                                    "1"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-75faa206-2dbc-47cb-85ba-f30dc10f607f"
+                    },
+                    {
+                        "name": "/api/v1/orders",
+                        "id": "8be6a2b5-acd7-4a52-85bc-7364261c7205",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}orders/3",
+                                "host": [
+                                    "{{API_PREFIX2}}orders"
+                                ],
+                                "path": [
+                                    "3"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-8be6a2b5-acd7-4a52-85bc-7364261c7205"
+                    }
+                ],
+                "id": "8dde9ba4-5cec-4335-ad23-f1f5f89af4c5",
+                "uid": "33955425-8dde9ba4-5cec-4335-ad23-f1f5f89af4c5"
+            },
+            {
+                "name": "OrderDetail",
+                "item": [
+                    {
+                        "name": "/api/v1/order_details",
+                        "id": "3bbd79b3-0d15-45d4-9639-4db0cc0b3abb",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "POST",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"order_id\" : 1,\r\n    \"book_id\" : 2,\r\n    \"price\" : 100000,\r\n    \"num_of_book\" : 2\r\n\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}order_details",
+                                "host": [
+                                    "{{API_PREFIX2}}order_details"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-3bbd79b3-0d15-45d4-9639-4db0cc0b3abb"
+                    },
+                    {
+                        "name": "/api/v1/order_details/userID",
+                        "id": "383f53fa-2254-4326-b6ed-a74b505b53a4",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}order_details/order/1",
+                                "host": [
+                                    "{{API_PREFIX2}}order_details"
+                                ],
+                                "path": [
+                                    "order",
+                                    "1"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-383f53fa-2254-4326-b6ed-a74b505b53a4"
+                    },
+                    {
+                        "name": "/api/v1/order_details",
+                        "id": "070e2940-d0f8-4772-86d2-5dce0ec9cbf7",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "PUT",
+                            "header": [],
+                            "body": {
+                                "mode": "raw",
+                                "raw": "{\r\n    \"order_id\" : 1,\r\n    \"book_id\" : 4,\r\n    \"price\" : 100000,\r\n    \"num_of_book\" : 3\r\n}",
+                                "options": {
+                                    "raw": {
+                                        "language": "json"
+                                    }
+                                }
+                            },
+                            "url": {
+                                "raw": "{{API_PREFIX2}}order_details/2",
+                                "host": [
+                                    "{{API_PREFIX2}}order_details"
+                                ],
+                                "path": [
+                                    "2"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-070e2940-d0f8-4772-86d2-5dce0ec9cbf7"
+                    },
+                    {
+                        "name": "/api/v1/order_details",
+                        "id": "1436cb99-bc60-4fb2-9732-938f0d8346c4",
+                        "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                        },
+                        "request": {
+                            "auth": {
+                                "type": "bearer",
+                                "bearer": [
+                                    {
+                                        "key": "token",
+                                        "value": "{{jwt}}",
+                                        "type": "string"
+                                    }
+                                ]
+                            },
+                            "method": "DELETE",
+                            "header": [],
+                            "url": {
+                                "raw": "{{API_PREFIX2}}order_details/1",
+                                "host": [
+                                    "{{API_PREFIX2}}order_details"
+                                ],
+                                "path": [
+                                    "1"
+                                ]
+                            }
+                        },
+                        "response": [],
+                        "uid": "33955425-1436cb99-bc60-4fb2-9732-938f0d8346c4"
+                    }
+                ],
+                "id": "bfead8a9-c1f7-4086-b73e-79573461d541",
+                "uid": "33955425-bfead8a9-c1f7-4086-b73e-79573461d541"
+            }
+        ]
+    }
+}

@@ -63,7 +63,10 @@ public class UserController {
                 return ResponseEntity.badRequest().body(errorMessages);
             }
 
-            return ResponseEntity.ok("login success");
+            String token = userService.loginUser(userLoginDTO.getUsername(), userLoginDTO.getPassword());
+
+            return ResponseEntity.ok("token : " + token);
+
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
