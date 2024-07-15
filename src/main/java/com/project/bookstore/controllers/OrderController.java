@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.bookstore.dtos.OrderDTO;
+import com.project.bookstore.models.Order;
+import com.project.bookstore.models.User;
 import com.project.bookstore.services.OrderService;
+import com.project.bookstore.services.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +30,17 @@ import lombok.RequiredArgsConstructor;
 public class OrderController {
 
     private final OrderService orderService;
+    private final UserService userService;
 
     @PostMapping("")
     public ResponseEntity<?> createOrder(
         @Valid @RequestBody OrderDTO orderDTO,
-        BindingResult result) {
+        BindingResult result,
+        @RequestHeader("Authorization") String authorizationHeader) {
         try{
+            String extractedToken = authorizationHeader.substring(7); // Loại bỏ "Bearer " từ chuỗi token
+            User user = userService.getUserDetailsFromToken(extractedToken);
+            orderDTO.setUserid(user.getId());
             if(result.hasErrors()) {
                 List<String> errorMessages = result.getFieldErrors()
                         .stream()
@@ -40,9 +49,9 @@ public class OrderController {
                 
                 return ResponseEntity.badRequest().body(errorMessages);
             }
-
-            orderService.createOrder(orderDTO);
-            return ResponseEntity.ok("Order created successfully");
+            // return ResponseEntity.ok(orderDTO.getUserid());
+            Order order = orderService.createOrder(orderDTO);
+            return ResponseEntity.ok(order);
             
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

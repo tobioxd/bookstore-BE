@@ -10,4 +10,6 @@ public interface IUserService {
 
     String loginUser(String username, String password) throws Exception;
 
+    User getUserDetailsFromToken(String token) throws Exception;
+
 }

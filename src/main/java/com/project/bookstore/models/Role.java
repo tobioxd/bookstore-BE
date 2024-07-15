@@ -30,4 +30,7 @@ public class Role {
 
     @Column(name = "name", nullable = false)
     private String name;
+
+    public static String ADMIN = "admin";
+    public static String USER = "user";
 }
