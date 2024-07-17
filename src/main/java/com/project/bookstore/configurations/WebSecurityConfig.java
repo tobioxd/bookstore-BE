@@ -1,7 +1,6 @@
 package com.project.bookstore.configurations;
 
 import com.project.bookstore.filters.JwtTokenFilter;
-import com.project.bookstore.models.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -31,8 +30,8 @@ public class WebSecurityConfig {
     private final JwtTokenFilter jwtTokenFilter;
     @Value("${api.prefix}")
     private String apiPrefix;
+
     @Bean
-    
     public SecurityFilterChain securityFilterChain(HttpSecurity http)  throws Exception{
         http
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
@@ -40,75 +39,37 @@ public class WebSecurityConfig {
                     requests
                             .requestMatchers(
                                     String.format("%s/users/register", apiPrefix),
-                                    String.format("%s/users/login", apiPrefix)
+                                    String.format("%s/users/login", apiPrefix),
+                                    "/api-docs",
+                                    "/api-docs/**",
+                                    "/swagger-resources",
+                                    "/swagger-resources/**",
+                                    "/configuration/ui",
+                                    "/configuration/security",
+                                    "/swagger-ui/**",
+                                    "/swagger-ui.html",
+                                    "/webjars/swagger-ui/**",
+                                    "/swagger-ui/index.html"
                             )
                             .permitAll()
-
                             .requestMatchers(GET,
                                     String.format("%s/roles**", apiPrefix)).permitAll()
 
                             .requestMatchers(GET,
-                                    String.format("%s/categories**", apiPrefix)).permitAll()
-
-                            .requestMatchers(GET,
                                     String.format("%s/categories/**", apiPrefix)).permitAll()
-
-                            .requestMatchers(POST,
-                                    String.format("%s/categories/**", apiPrefix)).hasAnyRole(Role.ADMIN)
-
-                            .requestMatchers(PUT,
-                                    String.format("%s/categories/**", apiPrefix)).hasAnyRole(Role.ADMIN)
-
-                            .requestMatchers(DELETE,
-                                    String.format("%s/categories/**", apiPrefix)).hasAnyRole(Role.ADMIN)
-
-                            .requestMatchers(GET,
-                                    String.format("%s/books**", apiPrefix)).permitAll()
 
                             .requestMatchers(GET,
                                     String.format("%s/books/**", apiPrefix)).permitAll()
 
-                            .requestMatchers(GET,
-                                    String.format("%s/books/images/*", apiPrefix)).permitAll()
-
-                            .requestMatchers(POST,
-                                    String.format("%s/books**", apiPrefix)).hasAnyRole(Role.ADMIN)
-
-                            .requestMatchers(PUT,
-                                    String.format("%s/books/**", apiPrefix)).hasAnyRole(Role.ADMIN)
-
-                            .requestMatchers(DELETE,
-                                    String.format("%s/books/**", apiPrefix)).hasAnyRole(Role.ADMIN)
-
-
-                            .requestMatchers(POST,
-                                    String.format("%s/orders/**", apiPrefix)).hasAnyRole(Role.USER)
 
                             .requestMatchers(GET,
                                     String.format("%s/orders/**", apiPrefix)).permitAll()
 
-                            .requestMatchers(PUT,
-                                    String.format("%s/orders/**", apiPrefix)).hasRole(Role.ADMIN)
-
-                            .requestMatchers(DELETE,
-                                    String.format("%s/orders/**", apiPrefix)).hasRole(Role.ADMIN)
-
-                            .requestMatchers(POST,
-                                    String.format("%s/order_details/**", apiPrefix)).hasAnyRole(Role.USER)
-
                             .requestMatchers(GET,
                                     String.format("%s/order_details/**", apiPrefix)).permitAll()
 
-                            .requestMatchers(PUT,
-                                    String.format("%s/order_details/**", apiPrefix)).hasRole(Role.ADMIN)
-
-                            .requestMatchers(DELETE,
-                                    String.format("%s/order_details/**", apiPrefix)).hasRole(Role.ADMIN)
-
-
-                            .anyRequest().authenticated();
-                            //.anyRequest().permitAll();
-
+                            .anyRequest()
+                            .authenticated();
                 })
                 .csrf(AbstractHttpConfigurer::disable);
         http.cors(new Customizer<CorsConfigurer<HttpSecurity>>() {

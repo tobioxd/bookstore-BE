@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -66,6 +67,7 @@ public class BookController {
     }
 
     @PostMapping("")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<?> createBook(
             @Valid @RequestBody BookDTO bookDTO,
             BindingResult result) {
@@ -87,6 +89,7 @@ public class BookController {
         }
     }
 
+    @PreAuthorize("hasRole('ROLE_admin')")
     @PutMapping("/{id}")
     public ResponseEntity<String> updateBook(
         @PathVariable("id") Long id,
@@ -100,8 +103,8 @@ public class BookController {
         }
     }
 
-
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<String> deleteBook(
         @PathVariable("id") Long id
     ) {

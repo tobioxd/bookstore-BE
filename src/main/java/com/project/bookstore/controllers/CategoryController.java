@@ -3,6 +3,7 @@ package com.project.bookstore.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,6 +39,7 @@ public class CategoryController {
 
 
     @PostMapping("")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<?> createCategory(
             @Valid @RequestBody CategoryDTO categoryDTO,
             BindingResult result) {
@@ -54,12 +56,14 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<String> updateCategory(@PathVariable("id") Long id, @RequestBody CategoryDTO categoryDTO) {
         categoryService.updateCategory(id, categoryDTO);
         return ResponseEntity.ok("update Category " + id + " successfully!");
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<String> deleteCategory(@PathVariable("id") Long id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok("delete Category " + id + " successfully!");

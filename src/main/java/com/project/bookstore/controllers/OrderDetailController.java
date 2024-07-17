@@ -3,6 +3,7 @@ package com.project.bookstore.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,6 +29,7 @@ public class OrderDetailController {
     private final OrderDetailService orderDetailService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ROLE_user')")
     public ResponseEntity<?> createOrderDetail(
         @Valid @RequestBody OrderDetailDTO orderDetailDTO,
         BindingResult result) {
@@ -51,11 +53,13 @@ public class OrderDetailController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_user')")
     public ResponseEntity<?> getOrderDetail(@Valid @PathVariable("id") Long id) {
         return ResponseEntity.ok("id " + id);
     }
 
     @GetMapping("/order/{orderId}")
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_user')")
     public ResponseEntity<?> getOrderDetails(@Valid @PathVariable("orderId") Long orderId) {
         try{
             return ResponseEntity.ok(orderDetailService.getAllOrderDetails(orderId));
@@ -65,6 +69,7 @@ public class OrderDetailController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<?> updateOrderDetail(@Valid @PathVariable("id") Long id,
             @Valid @RequestBody OrderDetailDTO orderDetailDTO) {
             try{
@@ -76,6 +81,7 @@ public class OrderDetailController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<String> deleteORderDetail(@Valid @PathVariable("id") Long id) {
         try{
             orderDetailService.deleteOrderDetail(id);

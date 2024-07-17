@@ -3,6 +3,7 @@ package com.project.bookstore.controllers;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -33,6 +34,7 @@ public class OrderController {
     private final UserService userService;
 
     @PostMapping("")
+    @PreAuthorize("hasRole('ROLE_user')")
     public ResponseEntity<?> createOrder(
         @Valid @RequestBody OrderDTO orderDTO,
         BindingResult result,
@@ -59,6 +61,7 @@ public class OrderController {
     }
 
     @GetMapping("/{user_id}")
+    @PreAuthorize("hasRole('ROLE_admin') or hasRole('ROLE_user')")
     public ResponseEntity<? > getOrders(@Valid @PathVariable("user_id") Long user_id) {
         try {
             return ResponseEntity.ok(orderService.getAllOrders(user_id));
@@ -68,6 +71,7 @@ public class OrderController {
     }  
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<?> updateOrder(@Valid @PathVariable Long id, @Valid @RequestBody OrderDTO orderDTO) {
         try {
             orderService.updateOrder(id, orderDTO);
@@ -78,6 +82,7 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ROLE_admin')")
     public ResponseEntity<String> deleteOrder(@Valid @PathVariable Long id) {
         try {
             orderService.deleteOrder(id);
